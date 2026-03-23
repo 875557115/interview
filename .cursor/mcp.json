@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "redis": {
+      "command": "python",
+      "args": ["template/src/template/mcp/redis_mcp_server.py"]
+    },
+    "mysql": {
+      "command": "python",
+      "args": ["template/src/template/mcp/mysql_mcp_server.py"]
+    },
+    "milvus": {
+      "command": "python",
+      "args": ["template/src/template/mcp/milvus_mcp_server.py"]
+    }
+  }
+}

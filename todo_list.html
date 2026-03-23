@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>代办软件</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #todoList {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>代办列表</h1>
+    <input type="text" id="newTodo" placeholder="添加新任务">
+    <button onclick="addTodo()">添加任务</button>
+    <ul id="todoList"></ul>
+
+    <script>
+        function addTodo() {
+            var task = document.getElementById('newTodo').value;
+            if (task.trim() === '') {
+                return;
+            }
+            var li = document.createElement('li');
+            li.textContent = task;
+            document.getElementById('todoList').appendChild(li);
+            document.getElementById('newTodo').value = '';
+        }
+    </script>
+</body>
+</html>

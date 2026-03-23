@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>面试问答 · AI Agent</title>
+  <style>
+    :root {
+      --bg: #eceff4;
+      --surface: #ffffff;
+      --surface2: #f5f7fa;
+      --border: #d8dee4;
+      --text: #1f2328;
+      --muted: #656d76;
+      --accent: #0969da;
+      --accent-hover: #0550ae;
+      --user-bubble: linear-gradient(135deg, #218bff 0%, #0969da 100%);
+      --bot-bubble: #f0f3f6;
+      --chat-bg: #eef1f5;
+      --radius: 14px;
+      --shadow: 0 1px 3px rgba(31, 35, 40, 0.12), 0 8px 24px rgba(31, 35, 40, 0.08);
+      --bubble-max: min(88vw, 520px);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      margin: 0;
+      min-height: 100vh;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 90% 60% at 50% 0%, rgba(9, 105, 218, 0.06), transparent);
+      color: var(--text);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 880px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .top-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+    .top-bar h1 {
+      margin: 0;
+      font-size: 1.1rem;
+      font-weight: 600;
+      flex: 1;
+      min-width: 140px;
+    }
+    .top-bar label { font-size: 12px; color: var(--muted); }
+    .top-bar input[type="text"] {
+      flex: 1;
+      min-width: 200px;
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface2);
+      color: var(--text);
+      font-size: 13px;
+    }
+    .top-bar input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .chat-shell {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-height: 420px;
+      max-height: calc(100vh - 200px);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .chat-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #fafbfc 0%, #ffffff 100%);
+    }
+    .chat-header .title {
+      font-weight: 600;
+      font-size: 15px;
+    }
+    .chat-header .sub {
+      font-size: 12px;
+      color: var(--muted);
+      width: 100%;
+      margin-top: 2px;
+    }
+    .chat-header .sub code {
+      font-size: 11px;
+      background: var(--surface2);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+    }
+    .chat-header .actions button {
+      padding: 6px 12px;
+      font-size: 12px;
+      border-radius: 8px;
+      background: var(--surface2);
+      color: var(--text);
+      border: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .chat-header .actions button:hover {
+      background: #eaeef2;
+    }
+
+    .chat-scroll {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 12px;
+      scroll-behavior: smooth;
+      background: var(--chat-bg);
+    }
+    #historyList {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      width: 100%;
+      min-width: 0;
+    }
+    .chat-scroll::-webkit-scrollbar { width: 8px; }
+    .chat-scroll::-webkit-scrollbar-thumb {
+      background: #c9d1d9;
+      border-radius: 4px;
+    }
+
+    .empty-hint {
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 32px 16px;
+    }
+
+    .chat-turn {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 4px;
+      width: 100%;
+      /* 关键：不要横向拉伸 .msg，否则气泡会被撑满一行 */
+      align-items: flex-start;
+    }
+    .msg-time {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: center;
+      margin: 4px 0;
+      align-self: stretch;
+    }
+
+    /* 气泡随文字：宽高均由内容决定，不纵向/横向拉伸 */
+    .msg {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: flex-start;
+      align-content: flex-start;
+      max-width: var(--bubble-max);
+      width: auto;
+      min-width: 0;
+      min-height: 0;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .msg-user {
+      align-self: flex-end;
+      margin-left: auto;
+      justify-content: flex-end;
+    }
+    .msg-assistant {
+      align-self: flex-start;
+      margin-right: auto;
+      justify-content: flex-start;
+    }
+
+    .bubble {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 4px;
+      padding: 8px 12px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.5;
+      white-space: pre-wrap;
+      word-break: break-word;
+      overflow-wrap: anywhere;
+      max-width: var(--bubble-max);
+      min-width: 0;
+      min-height: 0;
+      height: auto;
+      box-sizing: border-box;
+    }
+    /* 文本与标签之间的正文：占满气泡宽度以便换行 */
+    .bubble-body {
+      width: 100%;
+      min-height: 0;
+    }
+    .msg-user .bubble {
+      background: var(--user-bubble);
+      color: #fff;
+      border-bottom-right-radius: 4px;
+      box-shadow: 0 2px 8px rgba(9, 105, 218, 0.22);
+    }
+    .msg-assistant .bubble {
+      background: var(--bot-bubble);
+      color: var(--text);
+      border: 1px solid #d8dee4;
+      border-bottom-left-radius: 4px;
+      box-shadow: 0 1px 2px rgba(31, 35, 40, 0.06);
+    }
+
+    .bubble-label {
+      flex-shrink: 0;
+      font-size: 11px;
+      line-height: 1.25;
+      color: var(--muted);
+      margin: 0;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    .msg-user .bubble-label {
+      color: rgba(255, 255, 255, 0.85);
+    }
+
+    #retrieveOutput {
+      min-height: 0;
+      height: auto;
+      align-self: flex-start;
+      max-width: var(--bubble-max);
+      width: fit-content;
+    }
+    #retrieveOutput.msg-assistant {
+      margin-top: 4px;
+    }
+    #retrieveOutput:empty {
+      display: none;
+    }
+    #retrieveOutput:not(:empty) {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    .composer {
+      border-top: 1px solid var(--border);
+      padding: 12px 14px;
+      background: #fafbfc;
+    }
+    .composer-hint {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .composer-hint kbd {
+      display: inline-block;
+      padding: 2px 6px;
+      font-size: 11px;
+      font-family: inherit;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      color: var(--muted);
+    }
+    .composer-row {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+    #retrieveQuery {
+      flex: 1;
+      min-height: 44px;
+      max-height: 160px;
+      resize: vertical;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--text);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+    #retrieveQuery:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+    .composer-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .composer-btns button {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: none;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    #retrieveBtn {
+      background: var(--accent);
+      color: #fff;
+    }
+    #retrieveBtn:hover:not(:disabled) {
+      background: var(--accent-hover);
+    }
+    #retrieveBtn:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+    .btn-ghost {
+      background: transparent !important;
+      color: var(--muted) !important;
+      border: 1px solid var(--border) !important;
+    }
+    .btn-ghost:hover {
+      color: var(--text) !important;
+      background: #f0f3f6 !important;
+      border-color: var(--muted) !important;
+    }
+
+    .tools-section {
+      margin-top: 4px;
+    }
+    .tools-section summary {
+      cursor: pointer;
+      padding: 10px 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-size: 13px;
+      color: var(--muted);
+      list-style: none;
+    }
+    .tools-section summary::-webkit-details-marker { display: none; }
+    .tools-section summary::before {
+      content: "▸ ";
+      display: inline-block;
+      transition: transform 0.2s;
+    }
+    .tools-section[open] summary::before {
+      transform: rotate(90deg);
+    }
+    .tool-card {
+      margin-top: 10px;
+      padding: 14px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+    }
+    .tool-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 14px;
+    }
+    .tool-card textarea {
+      width: 100%;
+      min-height: 100px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--surface2);
+      color: var(--text);
+      font-size: 13px;
+    }
+    .tool-card .row {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .tool-card button {
+      padding: 8px 14px;
+      border-radius: 8px;
+      border: none;
+      background: var(--accent);
+      color: #fff;
+      font-size: 12px;
+      cursor: pointer;
+    }
+    .tool-card button:hover { background: var(--accent-hover); }
+    .tool-card .output {
+      margin-top: 10px;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      min-height: 60px;
+      white-space: pre-wrap;
+      word-break: break-word;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="top-bar">
+      <h1>面试问答</h1>
+      <label for="baseUrl">API</label>
+      <input id="baseUrl" type="text" value="http://localhost:8001" placeholder="http://localhost:8001" title="后端 Base URL" />
+    </div>
+
+    <div class="chat-shell">
+      <div class="chat-header">
+        <div>
+          <div class="title">对话</div>
+          <div class="sub">历史按时间升序，最新在下 · 本机最多保留 20 轮 · 接口 <code>/ui/retrieve-questions</code></div>
+        </div>
+        <div class="actions">
+          <button type="button" onclick="renderHistory()">刷新历史</button>
+          <button type="button" onclick="clearHistory()">清空历史</button>
+        </div>
+      </div>
+
+      <div class="chat-scroll" id="chatScrollArea">
+        <div id="historyList"></div>
+        <div id="retrieveOutput" class="msg msg-assistant" aria-live="polite"></div>
+      </div>
+
+      <div class="composer">
+        <div class="composer-hint">
+          <kbd>Enter</kbd> 发送 · <kbd>Shift</kbd>+<kbd>Enter</kbd> 换行
+        </div>
+        <div class="composer-row">
+          <textarea id="retrieveQuery" placeholder="输入面试问题…" rows="2"></textarea>
+          <div class="composer-btns">
+            <button id="retrieveBtn" type="button" onclick="callRetrieve()">发送</button>
+            <button type="button" class="btn-ghost" onclick="clearOutput('retrieveOutput')">清空回复</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <details class="tools-section">
+      <summary>更多工具（向量化 / 文本切割）</summary>
+      <div class="tool-card">
+        <h3>文本向量化 <code>/ui/text-vector</code></h3>
+        <textarea id="vectorText" placeholder="输入要清洗并向量化入库的文本"></textarea>
+        <div class="row">
+          <button id="vectorBtn" type="button" onclick="callVector()">开始向量化</button>
+          <button type="button" class="btn-ghost" onclick="clearOutput('vectorOutput')">清空结果</button>
+        </div>
+        <div id="vectorOutput" class="output"></div>
+      </div>
+      <div class="tool-card">
+        <h3>文本切割 <code>/ui/text-wash</code></h3>
+        <textarea id="washText" placeholder="输入要切割的文本"></textarea>
+        <div class="row">
+          <button id="washBtn" type="button" onclick="callWash()">开始切割</button>
+          <button type="button" class="btn-ghost" onclick="clearOutput('washOutput')">清空结果</button>
+        </div>
+        <div id="washOutput" class="output"></div>
+      </div>
+    </details>
+  </div>
+
+  <script>
+    const HISTORY_KEY = "qa_retrieve_history_v1";
+    const HISTORY_MAX = 20;
+
+    function getBaseUrl() {
+      const input = document.getElementById("baseUrl");
+      const raw = (input.value || "").trim();
+      const normalized = raw.replace(/\/+$/, "");
+      if (!normalized) {
+        throw new Error("请先填写 API Base URL（例如 http://localhost:8001）");
+      }
+      localStorage.setItem("api_base_url", normalized);
+      return normalized;
+    }
+
+    function buildUrl(path) {
+      return `${getBaseUrl()}${path}`;
+    }
+
+    function setLoading(btn, loading) {
+      btn.disabled = loading;
+      btn.textContent = loading ? "发送中…" : btn.dataset.defaultText;
+    }
+
+    function clearOutput(id) {
+      const node = document.getElementById(id);
+      node.textContent = "";
+      if (id === "retrieveOutput") {
+        node.className = "msg msg-assistant";
+      }
+    }
+
+    function scrollChatToBottom() {
+      const area = document.getElementById("chatScrollArea");
+      if (area) {
+        requestAnimationFrame(() => {
+          area.scrollTop = area.scrollHeight;
+        });
+      }
+    }
+
+    function getHistory() {
+      try {
+        return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveHistory(items) {
+      localStorage.setItem(HISTORY_KEY, JSON.stringify(items.slice(0, HISTORY_MAX)));
+    }
+
+    function addHistory(question, answer) {
+      const tMs = Date.now();
+      const items = getHistory();
+      items.unshift({
+        tMs,
+        ts: new Date().toLocaleString(),
+        question,
+        answer
+      });
+      saveHistory(items);
+    }
+
+    function clearHistory() {
+      localStorage.removeItem(HISTORY_KEY);
+      renderHistory();
+    }
+
+    function renderHistory() {
+      const el = document.getElementById("historyList");
+      const items = getHistory().slice();
+      items.sort((a, b) => (a.tMs || 0) - (b.tMs || 0));
+      if (!items.length) {
+        el.innerHTML = '<div class="empty-hint">暂无历史记录<br/>在下方输入问题并发送，开始对话</div>';
+        scrollChatToBottom();
+        return;
+      }
+      el.innerHTML = items
+        .map((item) => `
+          <div class="chat-turn">
+            <div class="msg-time">${escapeHtml(item.ts || "")}</div>
+            <div class="msg msg-user">
+              <div class="bubble">
+                <div class="bubble-label">你</div>
+                <div class="bubble-body">${escapeHtml(item.question || "")}</div>
+              </div>
+            </div>
+            <div class="msg msg-assistant">
+              <div class="bubble">
+                <div class="bubble-label">助手</div>
+                <div class="bubble-body">${escapeHtml(item.answer || "")}</div>
+              </div>
+            </div>
+          </div>
+        `)
+        .join("");
+      scrollChatToBottom();
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    function setStreamingBubble(text) {
+      const el = document.getElementById("retrieveOutput");
+      el.className = "msg msg-assistant";
+      el.innerHTML =
+        '<div class="bubble"><div class="bubble-label">本次回复</div><div class="bubble-body">' +
+        escapeHtml(text) +
+        "</div></div>";
+    }
+
+    /** 检索流式输出到聊天气泡，返回纯文本（用于写入历史，不含 UI 标签文案） */
+    async function readStreamToElement(response, el) {
+      if (!response.ok) {
+        const err = await response.text();
+        const msg = `请求失败：${response.status}\n${err}`;
+        setStreamingBubble(msg);
+        return msg;
+      }
+      if (!response.body) {
+        const msg = "服务端没有返回可读流。";
+        setStreamingBubble(msg);
+        return msg;
+      }
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder("utf-8");
+      let acc = "";
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        acc += decoder.decode(value, { stream: true });
+        setStreamingBubble(acc);
+        scrollChatToBottom();
+      }
+      return acc;
+    }
+
+    async function callRetrieve() {
+      const btn = document.getElementById("retrieveBtn");
+      if (btn.disabled) return;
+      const el = document.getElementById("retrieveOutput");
+      const query = document.getElementById("retrieveQuery").value.trim();
+      if (!query) {
+        const msg = "请输入问题后再发送。";
+        el.textContent = msg;
+        setStreamingBubble(msg);
+        return;
+      }
+      setLoading(btn, true);
+      setStreamingBubble("…");
+      try {
+        const res = await fetch(buildUrl("/ui/retrieve-questions"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query })
+        });
+        const answerText = await readStreamToElement(res, el);
+        if (answerText !== undefined && answerText !== null) {
+          addHistory(query, answerText);
+        }
+        renderHistory();
+        clearOutput("retrieveOutput");
+      } catch (e) {
+        const msg = `请求异常：${e}`;
+        setStreamingBubble(msg);
+      } finally {
+        setLoading(btn, false);
+        scrollChatToBottom();
+      }
+    }
+
+    async function callVector() {
+      const btn = document.getElementById("vectorBtn");
+      const el = document.getElementById("vectorOutput");
+      const query = document.getElementById("vectorText").value.trim();
+      if (!query) {
+        el.textContent = "请输入文本内容。";
+        return;
+      }
+      setLoading(btn, true);
+      try {
+        const res = await fetch(buildUrl("/ui/text-vector"), {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ query })
+        });
+        await readStreamToElementPlain(res, el);
+      } catch (e) {
+        el.textContent = `请求异常：${e}`;
+      } finally {
+        setLoading(btn, false);
+      }
+    }
+
+    async function callWash() {
+      const btn = document.getElementById("washBtn");
+      const el = document.getElementById("washOutput");
+      const text = document.getElementById("washText").value.trim();
+      if (!text) {
+        el.textContent = "请输入文本内容。";
+        return;
+      }
+      setLoading(btn, true);
+      try {
+        const url = buildUrl("/ui/text-wash?text=" + encodeURIComponent(text));
+        const res = await fetch(url, {
+          method: "POST"
+        });
+        await readStreamToElementPlain(res, el);
+      } catch (e) {
+        el.textContent = `请求异常：${e}`;
+      } finally {
+        setLoading(btn, false);
+      }
+    }
+
+    async function readStreamToElementPlain(response, el) {
+      if (!response.ok) {
+        el.textContent = `请求失败：${response.status}\n${await response.text()}`;
+        return;
+      }
+      if (!response.body) {
+        el.textContent = "服务端没有返回可读流。";
+        return;
+      }
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder("utf-8");
+      el.textContent = "";
+      while (true) {
+        const { value, done } = await reader.read();
+        if (done) break;
+        el.textContent += decoder.decode(value, { stream: true });
+      }
+    }
+
+    document.querySelectorAll("button[id$='Btn']").forEach((btn) => {
+      btn.dataset.defaultText = btn.textContent;
+    });
+
+    (function initBaseUrl() {
+      const saved = localStorage.getItem("api_base_url");
+      if (saved) {
+        document.getElementById("baseUrl").value = saved;
+      }
+      renderHistory();
+    })();
+
+    document.getElementById("retrieveQuery").addEventListener("keydown", function (e) {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        callRetrieve();
+      }
+    });
+  </script>
+</body>
+</html>
