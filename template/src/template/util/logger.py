@@ -17,7 +17,7 @@ class LoguruLoggingHandler(logging.Handler):
         logger.opt(
             depth=4,
             exception=record.exc_info,
-            ansi=True
+            colors=True
         ).log(level, record.getMessage())
 
 
@@ -83,7 +83,7 @@ def get_logger(name: str):
         _LOGGER_CONFIGURED = True
 
     # 这里我们不用 bind(name=xxx) 了，避免触发 extra 机制
-    return logger
+    return logging
 
 # 全局异常处理
 def custom_exception_handler(exc_type, exc_value, exc_traceback):

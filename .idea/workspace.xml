@@ -5,81 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="53152c88-69ed-4949-a896-8b1ce452ccb2" name="Changes" comment="增加前端页面">
-      <change afterPath="$PROJECT_DIR$/.cursor/mcp.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/aiagent.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.ask2agent.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/copilot.data.migration.edit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AGENTS.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CLAUDE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/check_import.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/financial_data_collector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poetry.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pyproject.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.editorconfig" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.github/ISSUE_TEMPLATE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.github/dependabot.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.github/workflows/ci.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.github/workflows/codeql.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.github/workflows/docs.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.github/workflows/publish.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.github/workflows/zizmor.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/CHANGELOG/v0.1.0.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/CODE_OF_CONDUCT.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/CONTRIBUTING.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/SECURITY.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/docs/api.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/docs/index.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/docs/installation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/docs/plan" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/docs/usage.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/justfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260313.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260314.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260315.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260316.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260316.log.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260317.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260318.2026-03-19_00-01-45_640091.log.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260318.log.zip" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260319.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/logs/interview_agent_20260323.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/__main__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/bll/milvus_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/llm/client.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/llm/model_factory.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/llm/prompt.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/llm/prompt_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/mcp/mcp_milvus_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/mcp/mcp_mysql_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/mcp/mcp_redis_manager.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/rag/history.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/rag/loader.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/rag/milvus_practice.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/rag/retriever.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/service/qa_service.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/ui/api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/ui/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/util/logger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/util/theard_pool.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/src/template/util/vector_util.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/tests/test_logger.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/tests/test_milvus.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/tests/test_python_boilerplate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/tests/test_stock_analysis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template/zensical.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/todo_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/template/src/template/proxy/claude_proxy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aiagent/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../aiagent/.idea/workspace.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/MarsCodeWorkspaceAppSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/aiagent.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/interview.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/__main__.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/__main__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/llm/client.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/llm/client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/llm/model_factory.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/llm/model_factory.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/rag/history.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/rag/history.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/rag/loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/rag/loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/rag/milvus_practice.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/rag/milvus_practice.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/rag/retriever.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/rag/retriever.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/service/qa_service.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/service/qa_service.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/util/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/util/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template/src/template/util/theard_pool.py" beforeDir="false" afterPath="$PROJECT_DIR$/template/src/template/util/theard_pool.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,10 +33,12 @@
   <component name="CopilotPersistence">
     <persistenceIdMap>
       <entry key="_C:/WK/pynamespace/aiagent" value="3AeXT4wPCgKNmLJCZphiQqdOUcC" />
+      <entry key="_C:/WK/pynamespace/interview" value="3BLJY9Bpmqx1w4wAhXQior3Rv4q" />
     </persistenceIdMap>
   </component>
   <component name="CopilotUserSelectedChatMode">
     <option name="chatModeId" value="Agent" />
+    <option name="inlineChatModeId" value="Ask" />
   </component>
   <component name="ExportToHTMLSettings">
     <option name="OUTPUT_DIRECTORY" value="$PROJECT_DIR$/../aiagent\exportToHTML" />
@@ -108,18 +54,18 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "875557115"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;875557115&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/875557115/interview.git",
-    "accountId": "7122b6b4-c0d7-4e47-8a72-ec82ec2e3dfb"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/875557115/interview.git&quot;,
+    &quot;accountId&quot;: &quot;7122b6b4-c0d7-4e47-8a72-ec82ec2e3dfb&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$USER_HOME$/.conda/envs/aiagent/Lib/asyncio/threads.py" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/.conda/envs/aiagent/Lib/site-packages/langchain_community/llms/ollama.py" root0="SKIP_INSPECTION" />
@@ -144,13 +90,15 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.__main__.executor": "Debug",
     "Python.api.executor": "Debug",
+    "Python.claude_proxy.executor": "Run",
     "Python.cn.executor": "Run",
     "Python.financial_data_collector.executor": "Run",
     "Python.history.executor": "Debug",
-    "Python.logger.executor": "Run",
+    "Python.logger.executor": "Debug",
     "Python.mcp_manager.executor": "Run",
     "Python.mcp_milvus_manager.executor": "Run",
     "Python.milvus.executor": "Run",
+    "Python.milvus_manager.executor": "Run",
     "Python.milvus_mcp_server (1).executor": "Debug",
     "Python.milvus_practice.executor": "Run",
     "Python.mysql.executor": "Run",
@@ -168,7 +116,8 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+    "last_opened_file_path": "C:/WK/pynamespace/interview",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="PyConsoleOptionsProvider">
@@ -184,9 +133,9 @@
       <recent name="C:\WK\pynamespace\aiagent\template\src\template\service" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.__main__">
+  <component name="RunManager" selected="Python.claude_proxy">
     <configuration name="__main__" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="aiagent" />
+      <module name="interview" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -208,8 +157,54 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="cn" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="aiagent" />
+    <configuration name="claude_proxy" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="interview" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/template/src/template/proxy" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/template/src/template/proxy/claude_proxy.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="logger" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="interview" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/template/src/template/util" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="RUN_TOOL" value="" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/template/src/template/util/logger.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="milvus_manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="interview" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -222,7 +217,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/template/src/template/bll/cn.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/template/src/template/bll/milvus_manager.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -231,8 +226,8 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="financial_data_collector" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="aiagent" />
+    <configuration name="milvus_practice" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="interview" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -240,58 +235,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/template/src/template/rag" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/financial_data_collector.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="mcp_milvus_manager" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="aiagent" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/template/src/template/mcp" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/template/src/template/mcp/mcp_milvus_manager.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="untitled-1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="aiagent" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/template/src/template/bll" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="RUN_TOOL" value="" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/template/src/template/bll/untitled-1.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/template/src/template/rag/milvus_practice.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -302,11 +251,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.claude_proxy" />
         <item itemvalue="Python.__main__" />
-        <item itemvalue="Python.cn" />
-        <item itemvalue="Python.untitled-1" />
-        <item itemvalue="Python.mcp_milvus_manager" />
-        <item itemvalue="Python.financial_data_collector" />
+        <item itemvalue="Python.milvus_practice" />
+        <item itemvalue="Python.milvus_manager" />
+        <item itemvalue="Python.logger" />
       </list>
     </recent_temporary>
   </component>
@@ -364,6 +313,17 @@
                   <entry key="Table.Default.Date.ColumnIdWidth" value="110" />
                 </map>
               </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
             </State>
           </value>
         </entry>
@@ -385,12 +345,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template/src/template/service/qa_service.py</url>
-          <line>50</line>
+          <line>44</line>
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template/src/template/service/qa_service.py</url>
-          <line>40</line>
+          <line>34</line>
           <option name="timeStamp" value="16" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -414,49 +374,49 @@
           <option name="timeStamp" value="52" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/template/src/template/rag/milvus_practice.py</url>
-          <line>165</line>
-          <option name="timeStamp" value="56" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/template/src/template/rag/milvus_practice.py</url>
-          <line>168</line>
-          <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/template/src/template/rag/milvus_practice.py</url>
-          <line>155</line>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template/src/template/rag/history.py</url>
           <line>127</line>
           <option name="timeStamp" value="59" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template/src/template/service/qa_service.py</url>
-          <line>44</line>
+          <line>38</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template/src/template/service/qa_service.py</url>
-          <line>82</line>
+          <line>76</line>
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template/src/template/service/qa_service.py</url>
-          <line>223</line>
+          <line>217</line>
           <option name="timeStamp" value="71" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template/src/template/service/qa_service.py</url>
-          <line>100</line>
+          <line>94</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template/src/template/rag/milvus_practice.py</url>
-          <line>128</line>
-          <option name="timeStamp" value="74" />
+          <line>88</line>
+          <option name="timeStamp" value="84" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/template/src/template/proxy/claude_proxy.py</url>
+          <line>62</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/template/src/template/proxy/claude_proxy.py</url>
+          <line>84</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/template/src/template/proxy/claude_proxy.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

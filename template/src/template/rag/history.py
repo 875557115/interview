@@ -4,7 +4,7 @@ import traceback
 from datetime import datetime
 from langchain_core.prompts import ChatPromptTemplate
 
-from template.llm.client import llm, logger
+from ..llm.client import llm, logger
 
 
 # ====================== 1. 纯手动实现JSON文本存储（保证数据完整性） ======================

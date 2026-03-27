@@ -1,6 +1,6 @@
-from template.util.logger import get_logger
+from ..util.logger import get_logger
 
-from template.llm.model_factory import create_llm
+from ..llm.model_factory import create_llm
 
 logger = get_logger("llm_client")
 

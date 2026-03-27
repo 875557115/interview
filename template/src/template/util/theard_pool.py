@@ -2,7 +2,7 @@ import threading
 import queue
 import time
 from typing import Callable, Any, Optional, List
-from template.util.logger import get_logger
+from ..util.logger import get_logger
 
 logger = get_logger("ProductionThreadPool")
 

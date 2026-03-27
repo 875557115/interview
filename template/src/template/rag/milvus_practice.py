@@ -2,10 +2,11 @@ import time
 from typing import List, Dict, Optional
 from dataclasses import dataclass
 
+from langchain_community.vectorstores import Milvus
 from langchain_core.documents import Document
 from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_milvus import Milvus
-from template.util.logger import get_logger
+
+from template.src.template.util.logger import get_logger
 
 
 
@@ -188,49 +189,50 @@ class AgentVectorDB:
 # 使用示例
 # ------------------------------
 if __name__ == "__main__":
-    pass
 
-    # # 1. 初始化数据库
-    # db = AgentVectorDB(
-    #     host="localhost",
-    #     port="19530",
-    #     collection_name="agent_collection",
-    #     model_name="all-MiniLM-L6-v2"
-    # )
-    #
-    # # 2. 构建测试实体
-    # test_entities = [
-    #     MilvusInterviewEntity(
-    #         text="Java中volatile关键字的作用及实现原理？",
-    #         difficulty=2,
-    #         tech_stack="Java",
-    #         domain="并发编程",
-    #         position="后端开发工程师"
-    #     ),
-    #     MilvusInterviewEntity(
-    #         text="Python中的GIL锁对多线程的影响？如何解决？",
-    #         difficulty=3,
-    #         tech_stack="Python",
-    #         domain="并发编程",
-    #         position="Python开发工程师"
-    #     )
-    # ]
-    #
+
+    # 1. 初始化数据库
+    db = AgentVectorDB(
+        host="localhost",
+        port="19530",
+        collection_name="agent_collection",
+        model_name="all-MiniLM-L6-v2"
+    )
+
+    # 2. 构建测试实体
+    test_entities = [
+        MilvusInterviewEntity(
+            text="Java中volatile关键字的作用及实现原理？",
+            difficulty=2,
+            tech_stack="Java",
+            domain="并发编程",
+            position="后端开发工程师"
+        ),
+        MilvusInterviewEntity(
+            text="Python中的GIL锁对多线程的影响？如何解决？",
+            difficulty=3,
+            tech_stack="Python",
+            domain="并发编程",
+            position="Python开发工程师"
+        )
+    ]
+
     # # 3. 插入数据
-    # db.add_entities(test_entities)
-    #
-    # # 4. 检索测试
-    # results = db.query(
-    #     text="volatiles是什么",
-    #     k=1,
-    #     difficulty=2,
-    #     tech_stack="Java"
-    # )
-    #
-    # # 5. 打印结果
-    # for doc in results:
-    #     print(f"\n📝 匹配文本：{doc.page_content}")
-    #     print(f"📌 元数据：{doc.metadata}")
+    # db.add_texts(test_entities)
+    # #
+
+    # 4. 检索测试
+    results = db.query(
+        text="volatiles是什么",
+        k=1,
+        difficulty=2,
+        tech_stack="Java"
+    )
+
+    # 5. 打印结果
+    for doc in results:
+        print(f"\n📝 匹配文本：{doc.page_content}")
+        print(f"📌 元数据：{doc.metadata}")
 
     # 6. 关闭连接
     # db.close()

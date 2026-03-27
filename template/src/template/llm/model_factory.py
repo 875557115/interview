@@ -3,8 +3,8 @@ from dotenv import load_dotenv
 from langchain_community.chat_models import ChatOpenAI
 
 from langchain_community.llms import Tongyi
-from langchain_community.llms.ollama import Ollama
-from template.util.logger import get_logger
+from langchain_ollama import OllamaLLM
+from ..util.logger import get_logger
 
 load_dotenv()
 logger = get_logger("model_factory")
@@ -55,8 +55,8 @@ def create_llm():
 
     # ===================== Ollama 本地模型 =====================
     elif model_type == "ollama":
-        return Ollama(
-            model=os.getenv("OLLAMA_MODEL", "llama3"),
+        return OllamaLLM(
+            model=os.getenv("OLLAMA_MODEL", "gpt-oss:20b-cloud"),
             format="json",
             temperature=0.1,
         )

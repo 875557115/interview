@@ -2,10 +2,9 @@ import os
 from langchain_community.vectorstores import Milvus
 from langchain_community.embeddings import SentenceTransformerEmbeddings
 from langchain_core.runnables import RunnablePassthrough, RunnableParallel
-from template.rag.loader import load_and_split_documents
-from template.llm.client import llm
-from template.llm.prompt_template import question_prompt
-from template.util.logger import get_logger
+
+from ..llm.client import llm
+from ..util.logger import get_logger
 
 logger = get_logger("vector_retriever")
 

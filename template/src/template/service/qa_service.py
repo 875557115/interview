@@ -3,20 +3,13 @@ import asyncio
 import traceback
 
 from langchain_community.embeddings import HuggingFaceEmbeddings
-from template.llm.client import llm
-from template.rag.milvus_practice import AgentVectorDB, MilvusInterviewEntity
-from template.util.logger import get_logger
-from template.rag.history import process_question_lightweight
+from ..llm.client import llm
+from ..rag.milvus_practice import AgentVectorDB, MilvusInterviewEntity
+from ..util.logger import get_logger
+from ..rag.history import process_question_lightweight
 from langchain_text_splitters import RecursiveCharacterTextSplitter
-from template.util.theard_pool import ProductionThreadPool
 
 logger = get_logger("qa_service")
-
-# 初始化Embedding模型
-embeddings = HuggingFaceEmbeddings(
-    model_name="all-MiniLM-L6-v2",  # 轻量级模型，适配中文/英文
-    encode_kwargs={"normalize_embeddings": True}  # 可选：归一化提升检索效果
-)
 
 vector_db_instance = AgentVectorDB(
     host="localhost",
